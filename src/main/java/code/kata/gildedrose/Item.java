@@ -2,11 +2,11 @@ package code.kata.gildedrose;
 
 public class Item {
 
-    private String name;
+    String name;
 
-    private int sellIn;
+    int sellIn;
 
-    private int quality;
+    int quality;
 
     public Item(String name, int sellIn, int quality) {
         this.name = name;
@@ -32,6 +32,31 @@ public class Item {
 
     public int getQuality() {
         return quality;
+    }
+
+    void updateItem() {
+        if (quality > 0) {
+            decreaseQuality();
+        }
+        decreaseSellIn();
+        if (sellIn < 0) {
+            if (quality > 0) {
+                decreaseQuality();
+            }
+        }
+
+    }
+
+    int decreaseSellIn() {
+        return this.sellIn = sellIn - 1;
+    }
+
+    int increaseQuality() {
+        return this.quality = quality + 1;
+    }
+
+    int decreaseQuality() {
+        return this.quality = quality - 1;
     }
 
 }
